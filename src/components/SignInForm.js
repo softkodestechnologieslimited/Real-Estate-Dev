@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Nav, Row, Col, Form, Button } from "react-bootstrap";
+import { FaRegObjectUngroup } from "react-icons/fa";
 
 function SignInForm() {
   const [validated, setValidated] = useState(false);
@@ -15,12 +16,14 @@ function SignInForm() {
   };
   return (
     <Container fluid className="sideimage">
-      <Nav activeKey="#">
+      <Nav variant="pills" defaultActiveKey="#" activeKey="#">
         <Nav.Item className="proty">
-          <Nav.Link>proty</Nav.Link>
+          <Nav.Link href="#">
+            proty <FaRegObjectUngroup />
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item className="home">
-          <Nav.Link href="#">Home</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>
       </Nav>
 
@@ -38,36 +41,64 @@ function SignInForm() {
         </Col>
       </Row>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Row lg={3} className="flex-column">
+        <Row lg={3} className="flex-column forms">
           <Form.Group
             lg={3}
             sm={1}
             as={Col}
-            className="mb-3"
+            className="mb-5"
             controlId="formBasicEmail"
           >
-            <Form.Control required type="email" placeholder="Enter email" />
+            <Form.Control
+              required
+              size="lg"
+              type="email"
+              placeholder="Enter email"
+            />
           </Form.Group>
 
           <Form.Group
             as={Col}
-            className="mb-3"
+            className="mb-5"
             controlId="formBasicPassword"
             lg={3}
             sm={1}
           >
-            <Form.Control required type="password" placeholder="Password" />
+            <Form.Control
+              required
+              size="lg"
+              type="password"
+              placeholder="Password"
+            />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Group className="mb-4" controlId="formBasicCheckbox">
             <Form.Check
               required
               type="checkbox"
-              label="I have read and agree to the terms and conditions"
+              label="I have read and agree to all terms and conditions"
             />
           </Form.Group>
-          <Button lg={1} sm={1} as={Col} variant="primary" type="submit">
+          <Button
+            className="continue-button"
+            lg={3}
+            sm={1}
+            as={Col}
+            variant="primary"
+            type="submit"
+          >
             Continue
           </Button>
+        </Row>
+        <Row>
+          <Col>
+            <div className="signinLink">
+              Have an account already?{" "}
+              <a href="/" style={{ textDecoration: "none" }}>
+                {" "}
+                Sign In
+              </a>
+            </div>
+          </Col>
         </Row>
       </Form>
     </Container>
