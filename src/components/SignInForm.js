@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Nav, Row, Col, Form, Button } from "react-bootstrap";
-import { FaRegObjectUngroup } from "react-icons/fa";
+import { FaLaravel } from "react-icons/fa";
 
 function SignInForm() {
   const [validated, setValidated] = useState(false);
@@ -18,12 +18,21 @@ function SignInForm() {
     <Container fluid className="sideimage">
       <Nav variant="pills" defaultActiveKey="#" activeKey="#">
         <Nav.Item className="proty">
-          <Nav.Link href="#">
-            proty <FaRegObjectUngroup />
+          <Nav.Link
+            href="#"
+            style={{
+              textDecoration: "none",
+              color: "antiquewhite",
+              backgroundColor: "#37214c",
+            }}
+          >
+            Proty <FaLaravel style={{ color: "antiquewhite" }} />
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="home">
-          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/" style={{ textDecoration: "none", color: "black" }}>
+            Home
+          </Nav.Link>
         </Nav.Item>
       </Nav>
 
