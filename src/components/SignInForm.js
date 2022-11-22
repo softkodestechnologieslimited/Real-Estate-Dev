@@ -4,6 +4,21 @@ import { FaLaravel } from "react-icons/fa";
 
 function SignInForm() {
   const [validated, setValidated] = useState(false);
+  const [agree, setAgree] = useState(false);
+  const [formState, setFormState] = useState({ email: "", password: "" });
+
+  const checkboxHandler = (e) => {
+    setAgree(!agree);
+    if (
+      formState.email.length > 0 &&
+      formState.password.length > 0 &&
+      !agree === true
+    ) {
+      setValidated(true);
+    } else {
+      setValidated(false);
+    }
+  };
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -14,6 +29,30 @@ function SignInForm() {
 
     setValidated(true);
   };
+
+  // const checkFormValue = () => {
+  //   if (
+  //     formState.email.length <= 0 &&
+  //     formState.password.length <= 0 &&
+  //     agree === true
+  //   )
+  //     setValidated(false);
+  // };
+
+  const updateValue = (e) => {
+    const { name, value } = e.target;
+    const newFormState = { ...formState };
+    newFormState[name] = value;
+    setFormState(newFormState);
+    if (value.length > 0 && agree === true) {
+      setValidated(true);
+    } else {
+      setValidated(false);
+      console.log(value.length);
+      console.log(agree);
+    }
+  };
+
   return (
     <Container fluid className="sideimage">
       <Nav variant="pills" defaultActiveKey="#" activeKey="#">
@@ -63,6 +102,8 @@ function SignInForm() {
               size="lg"
               type="email"
               placeholder="Enter email"
+              name={`email`}
+              onChange={updateValue}
             />
           </Form.Group>
 
@@ -78,25 +119,46 @@ function SignInForm() {
               size="lg"
               type="password"
               placeholder="Password"
+              name={`password`}
+              onChange={updateValue}
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicCheckbox">
-            <Form.Check
-              required
+
+          <div>
+            <input
               type="checkbox"
-              label="I have read and agree to all terms and conditions"
+              id="agree"
+              value={agree}
+              onChange={(e) => checkboxHandler(e)}
             />
-          </Form.Group>
-          <Button
+            <span> </span>
+            <label htmlFor="agree" className="mb-4">
+              {" "}
+              I have read and agree to all{" "}
+              <a
+                href="#"
+                alt="terms and conditions"
+                style={{ textDecoration: "none" }}
+              >
+                terms and conditions
+              </a>
+              .
+            </label>
+          </div>
+          {/* <Button
             className="continue-button"
             lg={3}
             sm={1}
             as={Col}
             variant="primary"
             type="submit"
+            disabled
           >
             Continue
-          </Button>
+          </Button> */}
+          <button className="continue-button" disabled={!validated}>
+            Continue
+          </button>
         </Row>
         <Row>
           <Col>

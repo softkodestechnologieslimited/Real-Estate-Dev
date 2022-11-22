@@ -33,6 +33,18 @@
 
 .continue-button {
   margin-left: 10px;
+  background-color: #39375b;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.continue-button:hover {
+  background-color: transparent;
+  border: 1px solid #39375b;
+  color: #000;
 }
 
 .signinLink {
