@@ -6,8 +6,9 @@ import SignInForm from "../components/SignInForm";
 function SignUp() {
   return (
     <>
-      <SignInForm />
-      {/* <PaymentForm /> */}
+      <SignInForm>
+        <PaymentForm />
+      </SignInForm>
     </>
   );
 }

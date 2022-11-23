@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Container, Nav, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Nav, Row, Col, Form } from "react-bootstrap";
 import { FaLaravel } from "react-icons/fa";
 
 function SignInForm() {
   const [validated, setValidated] = useState(false);
   const [agree, setAgree] = useState(false);
   const [formState, setFormState] = useState({ email: "", password: "" });
+  const [show, setShow] = useState();
+  function toggleShow() {
+    setShow(!show);
+  }
 
   const checkboxHandler = (e) => {
     setAgree(!agree);
@@ -29,15 +33,6 @@ function SignInForm() {
 
     setValidated(true);
   };
-
-  // const checkFormValue = () => {
-  //   if (
-  //     formState.email.length <= 0 &&
-  //     formState.password.length <= 0 &&
-  //     agree === true
-  //   )
-  //     setValidated(false);
-  // };
 
   const updateValue = (e) => {
     const { name, value } = e.target;
@@ -145,18 +140,12 @@ function SignInForm() {
               .
             </label>
           </div>
-          {/* <Button
+
+          <button
             className="continue-button"
-            lg={3}
-            sm={1}
-            as={Col}
-            variant="primary"
-            type="submit"
-            disabled
+            disabled={!validated}
+            onClick={toggleShow}
           >
-            Continue
-          </Button> */}
-          <button className="continue-button" disabled={!validated}>
             Continue
           </button>
         </Row>
