@@ -41,12 +41,6 @@
   transition: all 0.3s;
 }
 
-.continue-button:hover {
-  background-color: transparent;
-  border: 1px solid #39375b;
-  color: #000;
-}
-
 .signinLink {
   padding-left: 60px;
   padding-top: 160px;
