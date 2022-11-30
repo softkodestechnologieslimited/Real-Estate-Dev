@@ -6,23 +6,27 @@ import { BsPaypal } from "react-icons/bs";
 function SignInForm() {
   const [validated, setValidated] = useState(false);
   const [agree, setAgree] = useState(false);
-  const [colorgray, setColorGray] = useState(false);
+  const [payment, setPayment] = useState({ creditcard: false, paypal: false });
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
     payment: "",
   });
-  const disableButtonChange = (data) => {
-    setColorGray(true);
-  };
 
-  const [show, setShow] = useState();
+  const [show, setShow] = useState(false);
   function toggleShow() {
     setShow(!show);
+    setValidated(false);
   }
-  const radioHandler = (e) => {
-    setAgree(!agree);
-    if (formState.payment.length > 0 && !agree === true) {
+  const radioHandler = (e, paymentType) => {
+    if (paymentType === "cc") {
+      setPayment({ ...payment, creditcard: true, paypal: false });
+    } else if (paymentType === "pp") {
+      setPayment({ ...payment, creditcard: false, paypal: true });
+    }
+
+    if (formState.payment.length > 0) {
       setValidated(true);
     } else {
       setValidated(false);
@@ -162,12 +166,9 @@ function SignInForm() {
               </div>
 
               <button
-                colorgray={colorgray}
-                disableButtonChange={disableButtonChange}
                 className="continue-button"
                 style={{
-                  backgroundColor: `${(props) =>
-                    props.colorgray ? "gray" : "#39375b"}`,
+                  backgroundColor: !agree ? "gray" : "#39375b",
                 }}
                 disabled={!validated}
                 onClick={toggleShow}
@@ -260,8 +261,8 @@ function SignInForm() {
                   name="radio-stacked"
                   required
                   isValid
-                  onChange={(e) => radioHandler(e)}
-                  value={agree}
+                  onChange={(e) => radioHandler(e, "pp")}
+                  value={payment.paypal}
                 />
                 <label class="form-check-label" for="validationFormCheck1">
                   Paypal<span> </span>
@@ -276,8 +277,8 @@ function SignInForm() {
                   name="radio-stacked"
                   required
                   isValid
-                  onChange={(e) => radioHandler(e)}
-                  value={agree}
+                  onChange={(e) => radioHandler(e, "cc")}
+                  value={payment.creditcard}
                 />
                 <label class="form-check-label" for="validationFormCheck2">
                   Creditcard
@@ -288,13 +289,10 @@ function SignInForm() {
               </div>
               <button
                 className="continue-button"
-                colorgray={colorgray}
-                disableButtonChange={disableButtonChange}
                 type="submit"
                 disabled={!validated}
                 style={{
-                  backgroundColor: `${(props) =>
-                    props.colorgray ? "gray" : "#39375b"}`,
+                  backgroundColor: !validated ? "gray" : "#39375b",
                 }}
               >
                 Proceed to Pay
