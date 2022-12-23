@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Nav, Row, Col, Form } from "react-bootstrap";
 import { FaLaravel } from "react-icons/fa";
 import { BsPaypal } from "react-icons/bs";
@@ -65,8 +65,6 @@ function SignInForm() {
       setValidated(true);
     } else {
       setValidated(false);
-      console.log(value.length);
-      console.log(agree);
     }
   };
 
@@ -111,7 +109,8 @@ function SignInForm() {
             <Row lg={3} className="flex-column forms">
               <Form.Group
                 lg={3}
-                sm={1}
+                md={3}
+                sm={3}
                 as={Col}
                 className="mb-5"
                 controlId="formBasicEmail"
@@ -131,7 +130,8 @@ function SignInForm() {
                 className="mb-5"
                 controlId="formBasicPassword"
                 lg={3}
-                sm={1}
+                md={3}
+                sm={3}
               >
                 <Form.Control
                   required
@@ -166,7 +166,7 @@ function SignInForm() {
               </div>
 
               <button
-                className="continue-button"
+                className="continue-button col-lg-3 col-md-3 col-sm-5 col-xs-5"
                 style={{
                   backgroundColor: !agree ? "gray" : "#39375b",
                 }}
@@ -211,8 +211,8 @@ function SignInForm() {
             <Row lg={3} className="flex-column forms">
               <Form.Group
                 lg={3}
-                md={1}
-                sm={1}
+                md={3}
+                sm={3}
                 as={Col}
                 className="mb-5"
                 controlId="formBasicPayment"
@@ -226,32 +226,6 @@ function SignInForm() {
                   onChange={updateValue}
                 />
               </Form.Group>
-
-              {/* <div className="mb-3">
-                <Form.Check type="radio" id={`check-api-paypal`}>
-                  <Form.Check.Input
-                    type="radio"
-                    isValid
-                    value={agree}
-                    onChange={(e) => radioHandler(e)}
-                    id={`radio-1`}
-                  />
-                  <Form.Check.Label>
-                    Paypal
-                    <BsPaypal />
-                  </Form.Check.Label>
-                </Form.Check>
-                <Form.Check type="radio" id={`check-api-creditcard`}>
-                  <Form.Check.Input
-                    type="radio"
-                    isValid
-                    onChange={(e) => radioHandler(e)}
-                    value={agree}
-                    id="radio-2"
-                  />
-                  <Form.Check.Label>{`Creditcard  `}</Form.Check.Label>
-                </Form.Check>
-              </div> */}
 
               <div class="form-check">
                 <input
@@ -288,7 +262,7 @@ function SignInForm() {
                 </div>
               </div>
               <button
-                className="continue-button"
+                className="continue-button col-lg-3 col-md-3 col-sm-3"
                 type="submit"
                 disabled={!validated}
                 style={{

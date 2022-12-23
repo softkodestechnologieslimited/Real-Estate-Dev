@@ -47,3 +47,69 @@
   padding-bottom: 60px;
   text-decoration: none;
 }
+
+.page-row {
+  margin-top: 50px;
+}
+
+.dashboard {
+  background-color: aliceblue;
+}
+
+.account {
+  margin-top: 10px;
+  background-color: #fff;
+}
+.usdc {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.current-rate {
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 15px;
+}
+.money {
+  font-weight: bolder;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.user {
+  color: black;
+  font-weight: bold;
+  background-color: grey;
+}
+
+.transactions {
+  margin-top: 100px;
+  margin-bottom: 10px;
+  height: 100px;
+  background-color: #fff;
+}
+
+.lastest {
+  font-weight: bold;
+}
+
+.not-yet {
+  font-weight: 300;
+}
+
+input[type="file"] {
+  display: none;
+}
+label {
+  border: 0.5px solid #39375b;
+  border-radius: 7px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.property {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  height: 100vh;
+}
