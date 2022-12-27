@@ -37,6 +37,14 @@ function Dashboard() {
     }
   };
 
+  function copy() {
+    let copyText = document.querySelector("#input");
+    copyText.select();
+    document.execCommand("copy");
+  }
+
+  //   function transaction(transactionType) {}
+
   return (
     <>
       <NavbarHome />
@@ -112,10 +120,24 @@ function Dashboard() {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Body>
-          <div>Your Wallet ID</div>
-          <img src={CodeQR} alt="QR" />
-          <input id="input" type="text" /> <button id="copy">Copy</button>
+        <Modal.Body className="d-flex justify-content-center flex-column">
+          <div className=" d-flex justify-content-center mb-4">
+            Your Wallet ID
+          </div>
+          <div className="d-flex justify-content-center mb-4">
+            <img src={CodeQR} alt="QR" height={200} width={200} />
+          </div>
+          <div className="d-flex justify-content-center mb-4 flex-column">
+            <div className="d-flex justify-content-center   ">
+              USDC wallet address
+            </div>
+            <div className="d-flex justify-content-center flex-row">
+              <input id="input" type="text" />{" "}
+              <button id="copy" onClick={copy}>
+                Copy
+              </button>
+            </div>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setQR(false)}>
@@ -132,8 +154,13 @@ function Dashboard() {
       >
         <Modal.Body>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Row lg={3} className="flex-column forms">
-              <Form.Group lg={3} as={Col} controlId="formAccount">
+            <Row lg={12} className="flex-column forms">
+              <Form.Group
+                lg={10}
+                as={Col}
+                controlId="formAccount"
+                className="mb-5"
+              >
                 <Form.Control
                   type="text"
                   placeholder="Account"
@@ -143,9 +170,9 @@ function Dashboard() {
                 />
               </Form.Group>
               <Form.Group
-                lg={5}
-                md={5}
-                sm={5}
+                lg={10}
+                md={10}
+                sm={10}
                 as={Col}
                 className="mb-5"
                 controlId="formAmount"
@@ -160,11 +187,11 @@ function Dashboard() {
                 />
               </Form.Group>
             </Row>
-            <Row lg={3} className="flex-column forms">
+            <Row lg={12} className="flex-column forms">
               <Form.Group
-                lg={5}
-                md={5}
-                sm={5}
+                lg={10}
+                md={10}
+                sm={10}
                 as={Col}
                 className="mb-5"
                 controlId="formId"
@@ -186,7 +213,7 @@ function Dashboard() {
             Cancel
           </Button>
           <button
-            className="continue-button col-lg-3 col-md-3 col-sm-3"
+            className="continue-button2 col-lg-3 col-md-3 col-sm-3"
             type="submit"
             disabled={!validated}
             style={{
