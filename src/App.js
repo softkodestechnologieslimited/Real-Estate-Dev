@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
-import NavbarHome from "./components/Navbar";
+import SingleProperty from "./pages/SingleProperty";
 import Property from "./pages/Property";
 
 function App() {
@@ -25,6 +25,10 @@ function App() {
           <Route
             path={ROUTES.PROPERTY}
             element={<Property show={show} setShow={setShow} />}
+          />
+          <Route
+            path={ROUTES.SINGLEPROPERTY}
+            element={<SingleProperty show={show} setShow={setShow} />}
           />
         </Routes>
       </>
